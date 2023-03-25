@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { HiOutlineShoppingBag } from 'react-icons/hi'
 
 const Header = () => {
     return (
@@ -19,8 +20,8 @@ const Header = () => {
                         <li className='text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer duration-300'>Blog</li>
                     </ul>
                     <div className='relative'>
-                        <p className='w-6'>cart</p>
-                        <span className='absolute w-6 top-2 left-0 text-sm flex items-center justify-center font-semibold'>0</span>
+                        <HiOutlineShoppingBag className='w-full h-[35px] '/>
+                        <span className='absolute w-8 top-3 left-0 text-sm flex items-center justify-center font-semibold'>0</span>
                     </div>
                     <img className='w-8 h-8 rounded-full'
                         src='https://images.pexels.com/photos/264547/pexels-photo-264547.jpeg? auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' alt='userlogo'

@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import CartItem from '../components/CartItem'
+import { ToastContainer } from 'react-toastify'
 
 const Cart = () => {
-  //const productData = useSelector((state) => state.bazar.productData)
+  const productData = useSelector((state) => state.bazar.productData);
+  const [totalAmt, setTotalAmt] = useState('');
+
+  useEffect(() => {
+    let price = 0;
+    productData.map((item) => {
+      price += item.price * item.quantity
+      return price
+    });
+    setTotalAmt(price.toFixed(2));
+  }, [productData])
   return (
     <div>
       <img
@@ -19,27 +30,42 @@ const Cart = () => {
               cart totals
             </h2>
             <p className='flex items-center gap-4 text-base'>
-              Sub total{''}
+              Sub total{' '}
               <span className='font-titleFont font-bold text-lg'>
-                $200
+                $ {totalAmt}
               </span>
             </p>
             <p className='flex items-start gap-4 text-base'>
               Shipping {' '}
               <span>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, asperiores.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, asperiores.
               </span>
             </p>
           </div>
           <p className='font-titleFont font-semibold flex justify-between mt-6'>
-            
-            Total 
+
+            Total
             <span className='text-xl font-bold'>
-              $200
+              $ {totalAmt}
             </span>
           </p>
+          <button className='text-base bg-black text-white w-full py-3 mt-6 hover:bg-gray-800 duration-1000'>
+            proceed to checkout
+          </button>
         </div>
       </div>
+      <ToastContainer
+        position='top-left'
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='dark'
+      />
     </div>
   )
 }

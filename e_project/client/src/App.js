@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 import Cart from "./pages/Cart";
 import { productsData } from "./api/api";
+import Login from "./pages/Login";
 
 const Layout = () => {
   return (
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
         path: '/cart',
         element: <Cart />,
       },
+      {
+        path: '/login',
+        element: <Login />,
+      }
     ],
   },
 ]);

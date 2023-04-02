@@ -14,9 +14,9 @@ export const bazarSlice = createSlice({
                 (item) => item._id === action.payload._id
             );
 
-            if(item) {
+            if (item) {
                 item.quantity += action.payload.quantity;
-            }else {
+            } else {
                 state.productData.push(action.payload);
             }
         },
@@ -33,27 +33,37 @@ export const bazarSlice = createSlice({
                 (item) => item._id === action.payload._id
             );
 
-            if(item) {
-                item.quantity ++;
+            if (item) {
+                item.quantity++;
             }
-        }, 
+        },
         decrementQuantity: (state, action) => {
             const item = state.productData.find(
                 (item) => item._id === action.payload._id
             );
 
-            if(item) {
-                item.quantity --;
+            if (item) {
+                item.quantity--;
             }
         },
+        //============== User Start here =================
+        addUser: (state, action) => {
+            state.userInfo = action.payload;
+        },
+        removeUser: (state) => {
+            state.userInfo = null;
+        },
+        //============== User End here =================
     },
 });
 
-export const { 
+export const {
     addToCart,
     deleteItem,
     resetCart,
     incrementQuantity,
     decrementQuantity,
+    addUser,
+    removeUser,
 } = bazarSlice.actions;
 export default bazarSlice.reducer;
